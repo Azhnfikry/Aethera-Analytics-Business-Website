@@ -58,3 +58,16 @@ export interface AiResponse {
   response: string;
   category: 'report' | 'anomaly' | 'compliance' | 'recommendation';
 }
+
+export type View = 'home' | 'about' | 'blog';
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: 'Methodology' | 'Regulation' | 'Product' | 'Insights';
+  author: string;
+  publishedAt: string; // ISO date
+  readMinutes: number;
+  content: string[]; // paragraphs; lines starting with "## " render as subheadings
+}

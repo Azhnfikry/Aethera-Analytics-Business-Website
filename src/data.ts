@@ -1,4 +1,4 @@
-import { Facility, EmissionsSource, AuditLogEntry, SupplierNode, AiResponse } from './types';
+import { Facility, EmissionsSource, AuditLogEntry, SupplierNode, AiResponse, BlogPost } from './types';
 
 export const FACILITIES: Facility[] = [
   {
@@ -237,4 +237,59 @@ export const TRUST_TAGS = [
   'Hyper-scale Data Centers',
   'Academic Institutions',
   'Government Agencies'
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'scope-3-supplier-data',
+    title: 'Why Scope 3 Starts With Supplier Conversations, Not Spreadsheets',
+    excerpt: 'Value-chain emissions are usually the largest share of a footprint and the hardest to measure. Here is how to build a supplier data programme that actually gets responses.',
+    category: 'Methodology',
+    author: 'Azhan Fikri',
+    publishedAt: '2026-10-14',
+    readMinutes: 6,
+    content: [
+      'For most organizations, Scope 3 emissions make up the majority of their carbon footprint. Yet they are also the least visible, because the underlying activity happens inside other companies.',
+      '## Start with spend, then refine',
+      'A spend-based estimate gives you a full first picture quickly. It will not be precise, but it tells you which suppliers and categories matter most, so you know where to ask for primary data first.',
+      '## Make it easy for suppliers to respond',
+      'Long questionnaires go unanswered. Ask for a small set of activity data points, explain why you need them, and send reminders on a predictable schedule. Track who has responded so your team can follow up where it counts.',
+      '## Keep the evidence attached',
+      'Every number a supplier sends should stay linked to its source file and submission date. When an auditor asks where a figure came from, the answer should take seconds, not days.',
+    ],
+  },
+  {
+    id: 'audit-ready-carbon-data',
+    title: 'What "Audit-Ready" Really Means for Carbon Data',
+    excerpt: 'Assurance providers look for more than a final number. Data lineage, approvals and change history are what make a footprint defensible.',
+    category: 'Regulation',
+    author: 'Azhan Fikri',
+    publishedAt: '2026-09-30',
+    readMinutes: 5,
+    content: [
+      'As sustainability disclosures move toward external assurance, teams are discovering that a correct total is not enough. Reviewers want to see how that total was built.',
+      '## Lineage from source to report',
+      'Each reported figure should trace back through its calculation to the raw activity data and the emission factor used. If any link in that chain lives only in someone\'s inbox, it is a gap.',
+      '## Approvals and change history',
+      'Who changed a value, when, and why? A tamper-evident log of edits and sign-offs turns a spreadsheet into a record an auditor can rely on.',
+      '## Consistent methodology',
+      'Document which factors and boundaries you use, and apply them the same way every period. Changes are fine, as long as they are recorded and explained.',
+    ],
+  },
+  {
+    id: 'from-data-to-decisions',
+    title: 'From Carbon Data to Decarbonization Decisions',
+    excerpt: 'Measuring emissions is only the first step. The value comes from spotting hotspots and prioritizing the reductions that move the needle.',
+    category: 'Insights',
+    author: 'Azhan Fikri',
+    publishedAt: '2026-09-12',
+    readMinutes: 4,
+    content: [
+      'Many sustainability teams spend most of the year collecting data and very little time acting on it. Centralizing and automating the collection frees that time for decisions.',
+      '## Find the hotspots',
+      'Break emissions down by facility, scope and source. A small number of sites or categories usually drive most of the footprint, and that is where reduction effort pays off first.',
+      '## Model before you commit',
+      'Scenario analysis lets you compare options such as renewable energy procurement, efficiency upgrades or fleet changes before investing, so targets are grounded in realistic pathways.',
+    ],
+  },
 ];

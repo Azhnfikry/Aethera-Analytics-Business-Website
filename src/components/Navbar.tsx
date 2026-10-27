@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
 import AetheraLogo from './AetheraLogo';
+import { View } from '../types';
 
 interface NavbarProps {
   onOpenDemo: () => void;
-  currentView: 'home' | 'about';
-  onNavigate: (view: 'home' | 'about') => void;
+  currentView: View;
+  onNavigate: (view: View) => void;
 }
 
 export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarProps) {
@@ -31,6 +32,12 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
     setTimeout(() => {
       scrollToSection(sectionId);
     }, 50);
+  };
+
+  const handleBlogClick = () => {
+    onNavigate('blog');
+    setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleAboutClick = () => {
@@ -93,6 +100,12 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
           >
             // ABOUT US
           </button>
+          <button
+            onClick={handleBlogClick}
+            className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'blog' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
+          >
+            // BLOG
+          </button>
 
           {/* Book Demo Button */}
           <a
@@ -146,6 +159,12 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
               className="text-xl font-display font-medium text-left text-emerald-700 hover:text-emerald-800 cursor-pointer"
             >
               About Us Story
+            </button>
+            <button
+              onClick={handleBlogClick}
+              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
+            >
+              Blog
             </button>
           </div>
 

@@ -4,6 +4,8 @@ import Dashboard from './components/Dashboard';
 import DemoModal from './components/DemoModal';
 import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
+import Blog from './components/Blog';
+import { View } from './types';
 import { 
   Sparkles, ArrowRight, Database, Layers, 
   Cpu, GitPullRequest, BookmarkCheck, AlertCircle,
@@ -12,7 +14,7 @@ import {
 
 export default function App() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'about'>('home');
+  const [currentView, setCurrentView] = useState<View>('home');
 
   const handleOpenDemo = () => {
     window.open('https://calendar.app.google/Vce1rhzMPGhr8cHS6', '_blank', 'noopener,noreferrer');
@@ -49,7 +51,7 @@ export default function App() {
 
               <h1 className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl mx-auto">
                 Decarbonization <br />
-                <span className="bg-gradient-to-r from-emerald-650 via-emerald-500 to-teal-600 bg-clip-text text-transparent font-semibold">
+                <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent font-semibold">
                   Intelligence
                 </span> for Enterprises.
               </h1>
@@ -250,15 +252,17 @@ export default function App() {
           </section>
 
         </main>
-      ) : (
+      ) : currentView === 'about' ? (
         <AboutUs onBack={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+      ) : (
+        <Blog onBack={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
       )}
 
       {/* Sustainable briefing schedule modal */}
       <DemoModal isOpen={isDemoOpen} onClose={handleCloseDemo} />
 
       {/* Compact footer Columns */}
-      <Footer onOpenDemo={handleOpenDemo} onNavigateAbout={() => { setCurrentView('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+      <Footer onOpenDemo={handleOpenDemo} onNavigateAbout={() => { setCurrentView('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} onNavigateBlog={() => { setCurrentView('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
 
     </div>
   );

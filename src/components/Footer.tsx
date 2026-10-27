@@ -4,9 +4,10 @@ import AetheraLogo from './AetheraLogo';
 interface FooterProps {
   onOpenDemo: () => void;
   onNavigateAbout: () => void;
+  onNavigateBlog: () => void;
 }
 
-export default function Footer({ onOpenDemo, onNavigateAbout }: FooterProps) {
+export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -61,7 +62,7 @@ export default function Footer({ onOpenDemo, onNavigateAbout }: FooterProps) {
                 Resources
               </h4>
               <ul className="space-y-2 text-xs">
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Methodology Blog</a></li>
+                <li><button onClick={onNavigateBlog} className="text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer text-left">Blog</button></li>
                 <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">EMA Grid Database</a></li>
                 <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Case Studies</a></li>
                 <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Regulatory TCFD Guide</a></li>
