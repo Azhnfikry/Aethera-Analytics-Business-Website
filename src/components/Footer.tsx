@@ -1,13 +1,7 @@
-import { ShieldAlert, ExternalLink } from 'lucide-react';
 import AetheraLogo from './AetheraLogo';
+import { Link } from '../router';
 
-interface FooterProps {
-  onOpenDemo: () => void;
-  onNavigateAbout: () => void;
-  onNavigateBlog: () => void;
-}
-
-export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -22,14 +16,10 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
             <AetheraLogo size="sm" />
 
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-light max-w-sm">
-              Aethera is a Sustainability Intelligence Platform that helps organizations centralize sustainability data, automate carbon accounting, and generate audit-ready insights through AI-powered analytics and enterprise-grade traceability
+              Aethera is agentic sustainability data infrastructure: AI agents that collect, validate, and reconcile sustainability data into a governed, audit-ready foundation for carbon accounting, reporting, and decarbonization.
             </p>
 
             <div className="pt-2 flex flex-col space-y-2">
-              <div className="flex items-center space-x-2 text-[10px] font-mono text-neutral-500">
-                <div className="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></div>
-                <span>ALL ASEAN SYSTEMS OPERATIONAL</span>
-              </div>
               <div className="text-[11px] font-mono text-neutral-600 flex items-center space-x-1">
                 <span className="text-neutral-400">EMAIL:</span>
                 <a href="mailto:hello@aetheraanalytics.com" className="font-bold text-neutral-800 hover:text-emerald-700 transition-colors">
@@ -45,14 +35,14 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
             {/* Platform Columns */}
             <div className="space-y-3">
               <h4 className="font-mono text-[9px] font-bold text-neutral-500 tracking-wider uppercase">
-                Platform
+                Agents
               </h4>
               <ul className="space-y-2 text-xs">
-                <li><a href="#features" className="text-neutral-600 hover:text-neutral-900 transition-colors">Carbon Accounting</a></li>
-                <li><a href="#features" className="text-neutral-600 hover:text-neutral-900 transition-colors">Scope 3 Portal</a></li>
-                <li><a href="#features" className="text-neutral-600 hover:text-neutral-900 transition-colors">AI Co-Pilot</a></li>
-                <li><a href="#features" className="text-neutral-600 hover:text-neutral-900 transition-colors">Scenario Analytics</a></li>
-                 <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-emerald-705 hover:underline text-left cursor-pointer">Request Custom API</a></li>
+                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Data Ingestion</Link></li>
+                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Validation &amp; Reconciliation</Link></li>
+                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Emissions Calculation</Link></li>
+                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Action Agents</Link></li>
+                 <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline text-left cursor-pointer">Integration Enquiries</a></li>
               </ul>
             </div>
 
@@ -62,10 +52,9 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
                 Resources
               </h4>
               <ul className="space-y-2 text-xs">
-                <li><button onClick={onNavigateBlog} className="text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer text-left">Blog</button></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">EMA Grid Database</a></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Case Studies</a></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Regulatory TCFD Guide</a></li>
+                <li><Link to="/blog" className="text-neutral-600 hover:text-neutral-900 transition-colors">Blog</Link></li>
+                <li><Link to="/#how-it-works" className="text-neutral-600 hover:text-neutral-900 transition-colors">How It Works</Link></li>
+                <li><Link to="/#trust" className="text-neutral-600 hover:text-neutral-900 transition-colors">Trust &amp; Control</Link></li>
               </ul>
             </div>
 
@@ -75,13 +64,9 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
                 Company
               </h4>
               <ul className="space-y-2 text-xs">
-                <li><button onClick={onNavigateAbout} className="text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer text-left">About Us</button></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors flex items-center">
-                  <span>Careers</span>
-                  <span className="ml-1.5 px-1 py-0.2 bg-emerald-100 text-[8px] font-bold border border-emerald-200 text-emerald-800 rounded">HIRING</span>
-                </a></li>
-                <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 cursor-pointer transition-colors text-left">Contact Sales</a></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Partner Network</a></li>
+                <li><Link to="/about" className="text-neutral-600 hover:text-neutral-900 transition-colors">About Us</Link></li>
+                <li><Link to="/#pilots" className="text-neutral-600 hover:text-neutral-900 transition-colors">Pilot Programme</Link></li>
+                <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 transition-colors">Contact Sales</a></li>
               </ul>
             </div>
 
@@ -91,8 +76,8 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
                 Legal
               </h4>
               <ul className="space-y-2 text-xs">
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" onClick={(e) => e.preventDefault()} className="text-neutral-600 hover:text-neutral-900 transition-colors">Terms of Service</a></li>
+                <li><Link to="/privacy" className="text-neutral-600 hover:text-neutral-900 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-neutral-600 hover:text-neutral-900 transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
 
@@ -105,7 +90,7 @@ export default function Footer({ onOpenDemo, onNavigateAbout, onNavigateBlog }: 
           <div className="space-x-1 flex flex-col md:flex-row items-center gap-1 md:gap-2">
             <span>&copy; {currentYear} AETHERA ANALYTICA SOLUTION (CA0421550-V). All rights reserved.</span>
             <span className="hidden md:inline">·</span>
-            <span>THE INTELLIGENCE LAYER FOR SUSTAINABILITY</span>
+            <span>AGENTIC SUSTAINABILITY DATA INFRASTRUCTURE</span>
           </div>
         </div>
 

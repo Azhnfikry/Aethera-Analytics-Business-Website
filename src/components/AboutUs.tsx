@@ -29,10 +29,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
           <div className="space-y-4">
             <div className="flex items-center space-x-2 text-emerald-700 font-mono text-[10px] uppercase tracking-[0.25em] bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full w-fit">
               <Sparkles className="w-3 h-3 text-emerald-600" />
-              <span>THE INTELLIGENCE LAYER</span>
+              <span>AGENTIC DATA INFRASTRUCTURE</span>
             </div>
             <h1 className="font-display font-medium text-4xl sm:text-5xl text-neutral-900 tracking-tight leading-tight">
-              Building the Intelligence Layer for Sustainability.
+              Building Agentic Infrastructure for Sustainability Data.
             </h1>
           </div>
 
@@ -44,7 +44,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               Aethera was founded to solve this challenge.
             </p>
             <p className="text-black">
-              We believe sustainability teams should spend less time collecting data and more time driving meaningful action. Our mission is to transform fragmented sustainability information into trusted, actionable intelligence that helps organizations make better decisions, accelerate decarbonization, and build long-term resilience.
+              We believe sustainability teams should spend less time chasing data and more time driving meaningful action. Our mission is to build agentic data infrastructure: AI agents that continuously collect, validate, and reconcile sustainability data, giving organizations a trusted foundation to report on, make decisions with, and accelerate decarbonization.
             </p>
           </div>
 
@@ -56,15 +56,15 @@ export default function AboutUs({ onBack }: AboutUsProps) {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
-                <h4 className="font-display font-semibold text-neutral-800 text-sm">Actionable Intelligence</h4>
+                <h4 className="font-display font-semibold text-neutral-800 text-sm">Agents Do the Data Work</h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light">
-                  Data is only as good as the decisions it empowers. We help translate raw metrics into strategic corporate milestones.
+                  Collection, validation, and reconciliation run continuously, so sustainability staff can focus on executing decarbonization initiatives.
                 </p>
               </div>
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
-                <h4 className="font-display font-semibold text-neutral-800 text-sm">Automated Workflows</h4>
+                <h4 className="font-display font-semibold text-neutral-800 text-sm">Infrastructure, With People in Control</h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light">
-                  By removing spreadsheet friction, sustainability staff can focus on executing decarbonization initiatives.
+                  Not another dashboard: a governed, traceable data foundation. Agents propose, people approve, and every action is logged.
                 </p>
               </div>
             </div>
@@ -76,10 +76,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               Closing Statement
             </h2>
             <p className="text-xl font-display font-light text-neutral-800 tracking-tight leading-relaxed">
-              &ldquo;Turning Sustainability Data into Decisions.&rdquo;
+              &ldquo;Sustainability Data, Run by Agents.&rdquo;
             </p>
             <p className="text-xs text-neutral-500 font-sans font-light mt-3 max-w-xl">
-              At Aethera, we believe better sustainability outcomes begin with better information. By combining data, intelligence, and automation, we help organizations move beyond reporting and toward meaningful action.
+              At Aethera, we believe better sustainability outcomes begin with trusted data. By pairing AI agents with governed data infrastructure, we help organizations move beyond manual reporting toward continuous, audit-ready action.
             </p>
           </div>
 
@@ -131,7 +131,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
             </div>
 
             {/* Micro credentials block */}
-            <div className="mt-6 pt-5 border-t border-neutral-150 flex flex-col space-y-2.5 text-[10px] font-mono text-neutral-500">
+            <div className="mt-6 pt-5 border-t border-neutral-200 flex flex-col space-y-2.5 text-[10px] font-mono text-neutral-500">
               <div className="flex items-center space-x-2">
                 <User className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span>Engineer & Climate Innovation Lead</span>
@@ -143,7 +143,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
             </div>
 
             {/* Linkedin Link Button */}
-            <div className="mt-5 pt-4 border-t border-neutral-150">
+            <div className="mt-5 pt-4 border-t border-neutral-200">
               <a
                 href="https://www.linkedin.com/in/azhan-fikri-a44783241/"
                 target="_blank"
@@ -161,16 +161,16 @@ export default function AboutUs({ onBack }: AboutUsProps) {
           <div className="bg-neutral-100/80 rounded-xl p-6 border border-neutral-200 space-y-4">
             <h4 className="font-display font-semibold text-neutral-800 text-xs flex items-center space-x-1.5">
               <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Aethera Intelligence Briefing</span>
+              <span>Aethera Agentic Briefing</span>
             </h4>
             <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light avatar-bio">
-              Interested in Azhan's vision for enterprise decarbonization? Schedule a direct session or contact us directly at <a href="mailto:hello@aetheraanalytics.com" className="text-emerald-700 hover:underline font-semibold font-mono">hello@aetheraanalytics.com</a>.
+              Interested in Azhan's vision for agentic sustainability data infrastructure? Schedule a direct session or contact us directly at <a href="mailto:hello@aetheraanalytics.com" className="text-emerald-700 hover:underline font-semibold font-mono">hello@aetheraanalytics.com</a>.
             </p>
             <a
               href="https://calendar.app.google/Vce1rhzMPGhr8cHS6"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-2.5 bg-emerald-600 hover:bg-emerald-750 text-white font-mono text-[10px] font-bold tracking-wider rounded uppercase transition-colors cursor-pointer text-center shadow-xs"
+              className="flex items-center justify-center w-full py-2.5 bg-emerald-600 hover:bg-emerald-800 text-white font-mono text-[10px] font-bold tracking-wider rounded uppercase transition-colors cursor-pointer text-center shadow-xs"
             >
               Book 30-Min Demo
             </a>
@@ -189,7 +189,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
 
         <div className="relative z-10 max-w-2xl mx-auto space-y-6">
           <h2 className="font-display font-semibold text-xl sm:text-2xl text-white tracking-tight leading-snug">
-            We are building the sustainability data infrastructure that powers the next generation of sustainability intelligence.
+            We are building the agentic data infrastructure that powers the next generation of sustainability work.
           </h2>
           <p className="text-neutral-400 text-xs sm:text-sm font-sans font-light leading-relaxed">
             Collaborate with us through pilots, partnerships, or integrations and be part of the movement to make audit-ready climate data the norm for every organization.
@@ -200,7 +200,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               onClick={onBack}
               className="px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-mono font-bold tracking-wider rounded-full transition-all duration-300 cursor-pointer border border-neutral-700 shadow-sm"
             >
-              Explore Platform
+              Explore Aethera
             </button>
             <a
               href="https://calendar.app.google/Vce1rhzMPGhr8cHS6"

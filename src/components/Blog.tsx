@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, Clock, Sparkles } from 'lucide-react';
 import { BLOG_POSTS } from '../data';
 import { BlogPost } from '../types';
+import { Link } from '../router';
 
 interface BlogProps {
   onBack: () => void;
+  post?: BlogPost;
 }
 
 const CATEGORIES = ['All', 'Methodology', 'Regulation', 'Product', 'Insights'] as const;
@@ -12,9 +14,8 @@ const CATEGORIES = ['All', 'Methodology', 'Regulation', 'Product', 'Insights'] a
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
-export default function Blog({ onBack }: BlogProps) {
+export default function Blog({ onBack, post: openPost }: BlogProps) {
   const [activeCategory, setActiveCategory] = useState<(typeof CATEGORIES)[number]>('All');
-  const [openPost, setOpenPost] = useState<BlogPost | null>(null);
 
   const posts = [...BLOG_POSTS]
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
@@ -22,21 +23,16 @@ export default function Blog({ onBack }: BlogProps) {
   // Only show filters for categories that have posts
   const categories = CATEGORIES.filter((c) => c === 'All' || BLOG_POSTS.some((p) => p.category === c));
 
-  const openArticle = (post: BlogPost | null) => {
-    setOpenPost(post);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   if (openPost) {
     return (
       <article className="pt-28 pb-20 px-6 max-w-3xl mx-auto w-full relative z-10 animate-fade-in">
-        <button
-          onClick={() => openArticle(null)}
-          className="group mb-8 flex items-center space-x-2 text-xs font-mono font-bold tracking-wider text-neutral-500 hover:text-emerald-700 transition-colors cursor-pointer"
+        <Link
+          to="/blog"
+          className="group mb-8 flex items-center space-x-2 text-xs font-mono font-bold tracking-wider text-neutral-500 hover:text-emerald-700 transition-colors cursor-pointer w-fit"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
           <span>BACK TO ALL ARTICLES</span>
-        </button>
+        </Link>
 
         <div className="space-y-4 pb-8 border-b border-neutral-200">
           <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full w-fit inline-block">
@@ -128,9 +124,9 @@ export default function Blog({ onBack }: BlogProps) {
       {/* Post grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {posts.map((post, idx) => (
-          <button
+          <Link
             key={post.id}
-            onClick={() => openArticle(post)}
+            to={`/blog/${post.id}`}
             className={`group text-left bg-white border border-neutral-200 rounded-xl p-6 space-y-3 hover:border-emerald-300 shadow-xs transition-all duration-300 cursor-pointer flex flex-col ${
               idx === 0 && activeCategory === 'All' ? 'md:col-span-2' : ''
             }`}
@@ -155,7 +151,7 @@ export default function Blog({ onBack }: BlogProps) {
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </div>
-          </button>
+          </Link>
         ))}
       </div>
 

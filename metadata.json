@@ -1,6 +1,6 @@
 {
   "name": "Aethera",
-  "description": "Turning Sustainability Data into Decisions. Aethera is a highly polished enterprise sustainability intelligence platform that coordinates carbon accounting, AI workflows, and Scope 3 supplier data networks.",
+  "description": "Agentic Sustainability Data Infrastructure. Aethera deploys AI agents that collect, validate and reconcile sustainability data into a governed, audit-ready foundation for carbon accounting and reporting.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

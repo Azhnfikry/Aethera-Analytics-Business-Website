@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import AetheraLogo from './AetheraLogo';
 import { View } from '../types';
+import { navigate } from '../router';
 
 interface NavbarProps {
-  onOpenDemo: () => void;
   currentView: View;
-  onNavigate: (view: View) => void;
 }
 
-export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarProps) {
+export default function Navbar({ currentView }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -21,46 +20,15 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLogoClick = () => {
-    onNavigate('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleHomeNavigate = (sectionId: string) => {
-    onNavigate('home');
+  const go = (to: string) => {
     setIsOpen(false);
-    setTimeout(() => {
-      scrollToSection(sectionId);
-    }, 50);
+    navigate(to);
   };
 
-  const handleBlogClick = () => {
-    onNavigate('blog');
-    setIsOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleAboutClick = () => {
-    onNavigate('about');
-    setIsOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // height of the navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const handleLogoClick = () => go('/');
+  const handleHomeNavigate = (sectionId: string) => go(`/#${sectionId}`);
+  const handleBlogClick = () => go('/blog');
+  const handleAboutClick = () => go('/about');
 
   return (
     <nav
@@ -83,10 +51,10 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
         {/* Desktop Links & Status Badge */}
         <div className="hidden md:flex items-center space-x-8">
           <button
-            onClick={() => handleHomeNavigate('platform')}
+            onClick={() => handleHomeNavigate('how-it-works')}
             className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'home' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
           >
-            // PLATFORM
+            // HOW IT WORKS
           </button>
           <button
             onClick={() => handleHomeNavigate('capabilities')}
@@ -143,14 +111,14 @@ export default function Navbar({ onOpenDemo, currentView, onNavigate }: NavbarPr
         <div className="md:hidden fixed top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-white/95 backdrop-blur-lg border-t border-neutral-200 z-40 transition-all duration-300 px-6 py-8 flex flex-col justify-between shadow-lg">
           <div className="flex flex-col space-y-6">
             <button
-              onClick={() => handleHomeNavigate('platform')}
-              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-955 cursor-pointer"
+              onClick={() => handleHomeNavigate('how-it-works')}
+              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
             >
-              Platform Dashboard
+              How It Works
             </button>
             <button
               onClick={() => handleHomeNavigate('capabilities')}
-              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-955 cursor-pointer"
+              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
             >
               Value Propositions
             </button>
