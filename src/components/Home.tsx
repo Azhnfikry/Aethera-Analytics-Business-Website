@@ -20,34 +20,50 @@ const TEAM = [
   { name: 'Bryan Lai', initials: 'BL', role: 'Co-founder, Technical Lead (Data & AI)' },
 ];
 
-const FLOW = [
+// Build status shown on solution cards and How It Works items; update here as features ship
+const STATUS_STYLES = {
+  live: { label: 'Live in MVP', className: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
+  inDevelopment: { label: 'In development', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
+  roadmap: { label: 'Roadmap', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
+};
+
+type Status = keyof typeof STATUS_STYLES;
+
+const FLOW: {
+  step: string;
+  title: string;
+  caption: string;
+  agents?: boolean;
+  items: { icon: typeof Bot; label: string; detail?: string; status?: Status }[];
+}[] = [
   {
     step: '01',
     title: 'Your Data Sources',
-    caption: 'Wherever your sustainability data lives today.',
+    caption: 'Designed to connect wherever your sustainability data lives today.',
     items: [
-      { icon: FileText, label: 'Utility bills & invoices' },
-      { icon: Server, label: 'ERP & finance systems' },
+      { icon: FileText, label: 'Utility bills & invoices', status: 'live' },
+      { icon: Server, label: 'ERP & finance systems', status: 'inDevelopment' },
+      // TODO(content): confirm build status for facility meters & IoT
       { icon: Gauge, label: 'Facility meters & IoT' },
-      { icon: Users, label: 'Supplier submissions' },
+      { icon: Users, label: 'Supplier submissions', status: 'live' },
     ],
   },
   {
     step: '02',
     title: 'Aethera Agents',
-    caption: 'Do the data work, continuously.',
+    caption: 'Designed to do the data work, continuously.',
     agents: true,
     items: [
-      { icon: Database, label: 'Ingestion agent', detail: 'Extracts and normalises every source' },
-      { icon: ShieldCheck, label: 'Validation agent', detail: 'Checks completeness, flags anomalies' },
-      { icon: Layers, label: 'Calculation agent', detail: 'Applies emission factors, Scope 1–3' },
-      { icon: Mail, label: 'Engagement agent', detail: 'Chases missing supplier data' },
+      { icon: Database, label: 'Ingestion agent', detail: 'Extracts and normalises bills, invoices and supplier submissions', status: 'live' },
+      { icon: ShieldCheck, label: 'Validation agent', detail: 'Checks completeness, flags anomalies', status: 'inDevelopment' },
+      { icon: Layers, label: 'Calculation agent', detail: 'Applies emission factors, Scope 1–3', status: 'inDevelopment' },
+      { icon: Mail, label: 'Engagement agent', detail: 'Chases missing supplier data', status: 'roadmap' },
     ],
   },
   {
     step: '03',
     title: 'Your Team Approves',
-    caption: 'Agents propose. People decide.',
+    caption: 'Designed so agents propose and people decide.',
     items: [
       { icon: UserCheck, label: 'Review flagged changes' },
       { icon: ClipboardCheck, label: 'Approve before reporting' },
@@ -57,24 +73,17 @@ const FLOW = [
   {
     step: '04',
     title: 'Audit-Ready Outputs',
-    caption: 'One trusted foundation to build on.',
+    caption: 'Designed to give you one trusted foundation to build on.',
     items: [
-      { icon: BookOpen, label: 'Governed emissions ledger' },
-      { icon: GitBranch, label: 'Source-to-report lineage' },
-      { icon: ScrollText, label: 'Disclosure-ready reports' },
-      { icon: Lightbulb, label: 'Reduction opportunities' },
+      { icon: BookOpen, label: 'Governed emissions ledger', status: 'inDevelopment' },
+      { icon: GitBranch, label: 'Source-to-report lineage', status: 'inDevelopment' },
+      { icon: ScrollText, label: 'Disclosure-ready reports', status: 'roadmap' },
+      { icon: Lightbulb, label: 'Reduction opportunities', status: 'roadmap' },
     ],
   },
 ];
 
-// Build status shown on each solution card; update here as features ship
-const STATUS_STYLES = {
-  live: { label: 'Live in MVP', className: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
-  inDevelopment: { label: 'In development', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
-  roadmap: { label: 'Roadmap', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
-};
-
-const CAPABILITIES: { icon: typeof Database; title: string; status: keyof typeof STATUS_STYLES; text: string }[] = [
+const CAPABILITIES: { icon: typeof Database; title: string; status: Status; text: string }[] = [
   {
     icon: Database,
     title: 'Connect Every Data Source',
@@ -105,7 +114,7 @@ const TRUST = [
   {
     icon: UserCheck,
     title: 'Human-in-the-loop approvals',
-    text: 'No agent output reaches a report without sign-off from your team. Agents propose changes; people approve them.',
+    text: 'No automated output reaches a report without sign-off from your team. The platform proposes changes; people approve them.',
   },
   {
     icon: GitBranch,
@@ -114,8 +123,8 @@ const TRUST = [
   },
   {
     icon: History,
-    title: 'Every agent action logged',
-    text: 'Each action is recorded with what changed, when and why, giving auditors a complete trail to follow.',
+    title: 'Every change logged',
+    text: 'Each change is recorded with what changed, when and why, giving auditors a complete trail to follow.',
   },
   {
     icon: ScrollText,
@@ -137,18 +146,17 @@ export default function Home() {
           {/* Enterprise Tag */}
           <div className="mx-auto flex items-center space-x-2 text-emerald-700 font-mono text-[10px] uppercase tracking-[0.25em] bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full w-fit">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-emerald-600" />
-            <span>Agentic sustainability data infrastructure</span>
+            <span>Made for Malaysian companies</span>
           </div>
 
           <h1 className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl mx-auto">
             <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent font-semibold">
-              Audit-ready
-            </span> ESG data, <br />
-            without the chasing.
+              Sustainability Data Infrastructure
+            </span> for Audit&#8209;Ready Reporting.
           </h1>
 
           <p className="max-w-xl mx-auto text-neutral-600 text-sm sm:text-base font-sans font-light leading-relaxed">
-            AI agents collect, validate and trace sustainability data from every source, built for NSRF and Bursa disclosure. Your team approves every number.
+            Aethera connects every source of sustainability data, from utility bills and ERPs to suppliers, into one governed, audit-ready foundation. Less chasing for your team, and every number traceable.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
@@ -190,10 +198,10 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
               <div className="sm:col-span-7 space-y-1.5">
                 <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">
-                  Building the agentic data layer for carbon compliance.
+                  Building the sustainability data layer for Malaysian companies.
                 </h3>
                 <p className="text-xs text-neutral-600 font-sans font-light leading-relaxed">
-                  Aethera was founded by Azhan Fikri and Bryan Lai to remove the manual data chasing behind sustainability reporting. Our agents turn fragmented data from bills, ERPs and suppliers into a trusted, traceable foundation for carbon accounting and NSRF disclosure.
+                  Aethera was founded by Azhan Fikri and Bryan Lai to remove the manual data chasing behind sustainability reporting. We turn fragmented data from bills, ERPs and suppliers into a trusted, traceable foundation for carbon accounting and NSRF disclosure.
                 </p>
               </div>
               <div className="sm:col-span-5 space-y-2">
@@ -244,7 +252,7 @@ export default function Home() {
               From Scattered Data to an Audit-Ready Foundation
             </h2>
             <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
-              Aethera's agents sit between your data sources and your reports. They do the collection, checking, and calculation, and your team stays in control of what gets reported.
+              Aethera's agents are designed to sit between your data sources and your reports, doing the collection, checking and calculation while your team stays in control of what gets reported.
             </p>
           </div>
 
@@ -269,7 +277,7 @@ export default function Home() {
                     <p className={`text-xs font-sans font-light ${col.agents ? 'text-neutral-400' : 'text-neutral-500'}`}>{col.caption}</p>
                   </div>
                   <ul className="space-y-2">
-                    {col.items.map(({ icon: Icon, label, detail }: { icon: typeof Bot; label: string; detail?: string }) => (
+                    {col.items.map(({ icon: Icon, label, detail, status }) => (
                       <li
                         key={label}
                         className={`flex items-start gap-2.5 rounded-lg px-3 py-2.5 border ${
@@ -280,6 +288,11 @@ export default function Home() {
                         <div>
                           <span className={`block text-xs font-semibold ${col.agents ? 'text-white' : 'text-neutral-800'}`}>{label}</span>
                           {detail && <span className="block text-[11px] text-neutral-400 font-light">{detail}</span>}
+                          {status && (
+                            <span className={`inline-block mt-1.5 font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
+                              {STATUS_STYLES[status].label}
+                            </span>
+                          )}
                         </div>
                         {col.agents && <span className="ml-auto mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>}
                       </li>
@@ -339,7 +352,7 @@ export default function Home() {
 
               <div className="p-4 bg-emerald-50/40 border border-emerald-300/60 rounded-xl">
                 <p className="text-xs text-emerald-950 font-sans font-medium leading-relaxed">
-                  Aethera fixes this at the infrastructure level, with AI agents doing the data work and people staying in control.
+                  Aethera fixes this at the infrastructure level: one governed data foundation, with automation doing the heavy lifting and people staying in control.
                 </p>
               </div>
             </div>
@@ -394,7 +407,7 @@ export default function Home() {
               TRUST & CONTROL
             </span>
             <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
-              Agents Propose. People Approve.
+              Automation Proposes. People Approve.
             </h2>
             <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
               Reported sustainability data has to stand up to auditors and regulators. These principles are built into Aethera's architecture from day one, so automation never comes at the cost of accountability.

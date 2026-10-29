@@ -8,11 +8,11 @@ import { BLOG_POSTS } from './data';
 import { PATHS, navigate, usePageMeta, useRoute } from './router';
 
 const SITE = 'Aethera Analytics';
-const DEFAULT_DESCRIPTION = 'AI agents that collect, validate and trace sustainability data for Malaysian companies. Built for NSRF and Bursa disclosure, with your team approving every number.';
+const DEFAULT_DESCRIPTION = 'Sustainability data infrastructure for Malaysian companies. Collect, validate and trace data from every source into an audit-ready foundation.';
 
 const PAGE_META = {
-  home: { title: `${SITE} | Audit-ready carbon data for NSRF disclosure`, description: DEFAULT_DESCRIPTION },
-  about: { title: `About Us | ${SITE}`, description: 'Aethera is building agentic infrastructure for sustainability data. Meet co-founders Azhan Fikri and Bryan Lai and learn about our mission.' },
+  home: { title: `${SITE} | Sustainability data infrastructure for NSRF disclosure`, description: DEFAULT_DESCRIPTION },
+  about: { title: `About Us | ${SITE}`, description: 'Aethera is building sustainability data infrastructure for Malaysian companies. Meet co-founders Azhan Fikri and Bryan Lai and learn about our mission.' },
   blog: { title: `Blog | ${SITE}`, description: 'Methodology notes, regulatory updates and practical guidance for sustainability teams.' },
   privacy: { title: `Privacy Policy | ${SITE}`, description: 'How Aethera collects, uses and protects personal data under the Malaysian PDPA.' },
   terms: { title: `Terms of Service | ${SITE}`, description: 'Terms governing use of the aetheraanalytics.com website.' },

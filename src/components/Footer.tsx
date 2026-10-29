@@ -16,7 +16,7 @@ export default function Footer() {
             <AetheraLogo size="sm" />
 
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-light max-w-sm">
-              Aethera is agentic sustainability data infrastructure for Malaysian companies: AI agents that collect, validate and trace sustainability data into an audit-ready foundation for carbon accounting and NSRF disclosure.
+              Aethera is sustainability data infrastructure for Malaysian companies. We collect, validate and trace sustainability data into an audit-ready foundation for carbon accounting and NSRF disclosure.
             </p>
 
             <div className="pt-2 flex flex-col space-y-2">
@@ -35,13 +35,13 @@ export default function Footer() {
             {/* Platform Columns */}
             <div className="space-y-3">
               <h4 className="font-mono text-[9px] font-bold text-neutral-500 tracking-wider uppercase">
-                Agents
+                Product
               </h4>
               <ul className="space-y-2 text-xs">
                 <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Data Ingestion</Link></li>
                 <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Validation &amp; Reconciliation</Link></li>
                 <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Emissions Calculation</Link></li>
-                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Action Agents</Link></li>
+                <li><Link to="/#capabilities" className="text-neutral-600 hover:text-neutral-900 transition-colors">Supplier Data Collection</Link></li>
                  <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline text-left cursor-pointer">Integration Enquiries</a></li>
               </ul>
             </div>
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="space-x-1 flex flex-col md:flex-row items-center gap-1 md:gap-2">
             <span>&copy; {currentYear} AETHERA ANALYTICA SOLUTION (CA0421550-V). All rights reserved.</span>
             <span className="hidden md:inline">·</span>
-            <span>AGENTIC SUSTAINABILITY DATA INFRASTRUCTURE</span>
+            <span>SUSTAINABILITY DATA INFRASTRUCTURE</span>
           </div>
         </div>
 

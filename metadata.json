@@ -1,6 +1,6 @@
 {
   "name": "Aethera",
-  "description": "AI agents that collect, validate and trace sustainability data for Malaysian companies. Built for NSRF and Bursa disclosure, with your team approving every number.",
+  "description": "Sustainability data infrastructure for Malaysian companies. Collect, validate and trace data from every source into an audit-ready foundation.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

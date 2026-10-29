@@ -29,10 +29,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
           <div className="space-y-4">
             <div className="flex items-center space-x-2 text-emerald-700 font-mono text-[10px] uppercase tracking-[0.25em] bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full w-fit">
               <Sparkles className="w-3 h-3 text-emerald-600" />
-              <span>AGENTIC DATA INFRASTRUCTURE</span>
+              <span>SUSTAINABILITY DATA INFRASTRUCTURE</span>
             </div>
             <h1 className="font-display font-medium text-4xl sm:text-5xl text-neutral-900 tracking-tight leading-tight">
-              Building Agentic Infrastructure for Sustainability Data.
+              Building the Sustainability Data Layer for Malaysian Companies.
             </h1>
           </div>
 
@@ -44,7 +44,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               Aethera was founded to solve this challenge.
             </p>
             <p className="text-black">
-              We believe sustainability teams should spend less time chasing data and more time driving meaningful action. Our mission is to build agentic data infrastructure: AI agents that continuously collect, validate, and reconcile sustainability data, giving organisations a trusted foundation to report on, make decisions with, and accelerate decarbonisation.
+              We believe sustainability teams should spend less time chasing data and more time driving meaningful action. Our mission is to build sustainability data infrastructure that continuously collects, validates and traces sustainability data, giving organisations a trusted foundation to report on, make decisions with, and accelerate decarbonisation.
             </p>
           </div>
 
@@ -56,15 +56,15 @@ export default function AboutUs({ onBack }: AboutUsProps) {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
-                <h4 className="font-display font-semibold text-neutral-800 text-sm">Agents Do the Data Work</h4>
+                <h4 className="font-display font-semibold text-neutral-800 text-sm">Automation Does the Data Work</h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light">
-                  Collection, validation, and reconciliation run continuously, so sustainability staff can focus on executing decarbonisation initiatives.
+                  Collection, validation and reconciliation should run continuously, so sustainability staff can focus on executing decarbonisation initiatives.
                 </p>
               </div>
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
                 <h4 className="font-display font-semibold text-neutral-800 text-sm">Infrastructure, With People in Control</h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light">
-                  Not another dashboard: a governed, traceable data foundation. Agents propose, people approve, and every action is logged.
+                  Not another dashboard: a governed, traceable data foundation. Automation proposes, people approve, and every change is logged.
                 </p>
               </div>
             </div>
@@ -76,10 +76,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               Closing Statement
             </h2>
             <p className="text-xl font-display font-light text-neutral-800 tracking-tight leading-relaxed">
-              &ldquo;Sustainability Data, Run by Agents.&rdquo;
+              &ldquo;Sustainability Data You Can Trust.&rdquo;
             </p>
             <p className="text-xs text-neutral-500 font-sans font-light mt-3 max-w-xl">
-              At Aethera, we believe better sustainability outcomes begin with trusted data. By pairing AI agents with governed data infrastructure, we help organisations move beyond manual reporting toward continuous, audit-ready action.
+              At Aethera, we believe better sustainability outcomes begin with trusted data. By pairing automation with governed data infrastructure, we help organisations move beyond manual reporting toward continuous, audit-ready action.
             </p>
           </div>
 
@@ -183,10 +183,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
           <div className="bg-neutral-100/80 rounded-xl p-6 border border-neutral-200 space-y-4">
             <h4 className="font-display font-semibold text-neutral-800 text-xs flex items-center space-x-1.5">
               <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Aethera Agentic Briefing</span>
+              <span>Aethera Briefing</span>
             </h4>
             <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light avatar-bio">
-              Interested in Azhan's vision for agentic sustainability data infrastructure? Schedule a direct session or contact us directly at <a href="mailto:hello@aetheraanalytics.com" className="text-emerald-700 hover:underline font-semibold font-mono">hello@aetheraanalytics.com</a>.
+              Interested in our vision for sustainability data infrastructure? Schedule a direct session or contact us directly at <a href="mailto:hello@aetheraanalytics.com" className="text-emerald-700 hover:underline font-semibold font-mono">hello@aetheraanalytics.com</a>.
             </p>
             <a
               href="https://calendar.app.google/Vce1rhzMPGhr8cHS6"
@@ -211,7 +211,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
 
         <div className="relative z-10 max-w-2xl mx-auto space-y-6">
           <h2 className="font-display font-semibold text-xl sm:text-2xl text-white tracking-tight leading-snug">
-            We're building the agentic data infrastructure for carbon compliance, starting in Malaysia.
+            We're building the sustainability data infrastructure for carbon compliance, starting in Malaysia.
           </h2>
           <p className="text-neutral-400 text-xs sm:text-sm font-sans font-light leading-relaxed">
             Work with us through pilots, partnerships or integrations to make audit-ready climate data the norm for every organisation.
