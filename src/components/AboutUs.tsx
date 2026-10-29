@@ -38,13 +38,13 @@ export default function AboutUs({ onBack }: AboutUsProps) {
 
           <div className="text-sm sm:text-base text-black font-sans font-normal leading-relaxed space-y-6">
             <p className="text-black">
-              Organizations today face growing pressure to manage sustainability performance, comply with evolving regulations, and reduce environmental impact. Yet sustainability data remains fragmented across spreadsheets, departments, suppliers, utility bills, and disconnected systems.
+              Organisations today face growing pressure to manage sustainability performance, comply with evolving regulations, and reduce environmental impact. Yet sustainability data remains fragmented across spreadsheets, departments, suppliers, utility bills, and disconnected systems.
             </p>
             <p className="font-semibold text-black border-l-2 border-emerald-500 pl-4 bg-emerald-50/40 py-2 rounded-r-lg">
               Aethera was founded to solve this challenge.
             </p>
             <p className="text-black">
-              We believe sustainability teams should spend less time chasing data and more time driving meaningful action. Our mission is to build agentic data infrastructure: AI agents that continuously collect, validate, and reconcile sustainability data, giving organizations a trusted foundation to report on, make decisions with, and accelerate decarbonization.
+              We believe sustainability teams should spend less time chasing data and more time driving meaningful action. Our mission is to build agentic data infrastructure: AI agents that continuously collect, validate, and reconcile sustainability data, giving organisations a trusted foundation to report on, make decisions with, and accelerate decarbonisation.
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
                 <h4 className="font-display font-semibold text-neutral-800 text-sm">Agents Do the Data Work</h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans font-light">
-                  Collection, validation, and reconciliation run continuously, so sustainability staff can focus on executing decarbonization initiatives.
+                  Collection, validation, and reconciliation run continuously, so sustainability staff can focus on executing decarbonisation initiatives.
                 </p>
               </div>
               <div className="p-5 bg-white border border-neutral-200 rounded-lg space-y-2">
@@ -79,19 +79,19 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               &ldquo;Sustainability Data, Run by Agents.&rdquo;
             </p>
             <p className="text-xs text-neutral-500 font-sans font-light mt-3 max-w-xl">
-              At Aethera, we believe better sustainability outcomes begin with trusted data. By pairing AI agents with governed data infrastructure, we help organizations move beyond manual reporting toward continuous, audit-ready action.
+              At Aethera, we believe better sustainability outcomes begin with trusted data. By pairing AI agents with governed data infrastructure, we help organisations move beyond manual reporting toward continuous, audit-ready action.
             </p>
           </div>
 
         </div>
 
-        {/* Right Column: Founder spotlight */}
+        {/* Right Column: Co-founder spotlights */}
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm border-t-4 border-t-emerald-600 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-radial from-emerald-500/5 to-transparent pointer-events-none rounded-full blur-xl"></div>
             
             <h3 className="font-mono text-[9px] font-bold text-neutral-400 tracking-wider uppercase mb-5 block">
-              FOUNDER SPOTLIGHT
+              CO-FOUNDER SPOTLIGHT
             </h3>
 
             {/* Profile Avatar & Bio Header */}
@@ -116,7 +116,7 @@ export default function AboutUs({ onBack }: AboutUsProps) {
               </div>
               <div>
                 <h4 className="font-display font-bold text-base text-neutral-800 leading-tight">Azhan Fikri</h4>
-                <p className="text-xs text-emerald-700 font-mono mt-1">Founder</p>
+                <p className="text-xs text-emerald-700 font-mono mt-1">Co-founder, Product & Business Operations</p>
               </div>
             </div>
 
@@ -157,6 +157,28 @@ export default function AboutUs({ onBack }: AboutUsProps) {
 
           </div>
 
+          <div className="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm border-t-4 border-t-emerald-600 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-radial from-emerald-500/5 to-transparent pointer-events-none rounded-full blur-xl"></div>
+
+            <h3 className="font-mono text-[9px] font-bold text-neutral-400 tracking-wider uppercase mb-5 block">
+              CO-FOUNDER SPOTLIGHT
+            </h3>
+
+            <div className="flex items-center space-x-4">
+              <div className="w-14 h-14 rounded-full border border-neutral-200 overflow-hidden shrink-0 shadow-inner flex items-center justify-center bg-neutral-100">
+                <div className="flex items-center justify-center w-full h-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-mono text-base font-bold tracking-tight shadow-inner">
+                  BL
+                </div>
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-base text-neutral-800 leading-tight">Bryan Lai</h4>
+                <p className="text-xs text-emerald-700 font-mono mt-1">Co-founder, Technical Lead (Data & AI)</p>
+              </div>
+            </div>
+
+            {/* TODO(content): Bryan Lai's photo, biography, credentials and LinkedIn URL */}
+          </div>
+
           {/* Quick contact widget */}
           <div className="bg-neutral-100/80 rounded-xl p-6 border border-neutral-200 space-y-4">
             <h4 className="font-display font-semibold text-neutral-800 text-xs flex items-center space-x-1.5">
@@ -189,10 +211,10 @@ export default function AboutUs({ onBack }: AboutUsProps) {
 
         <div className="relative z-10 max-w-2xl mx-auto space-y-6">
           <h2 className="font-display font-semibold text-xl sm:text-2xl text-white tracking-tight leading-snug">
-            We are building the agentic data infrastructure that powers the next generation of sustainability work.
+            We're building the agentic data infrastructure for carbon compliance, starting in Malaysia.
           </h2>
           <p className="text-neutral-400 text-xs sm:text-sm font-sans font-light leading-relaxed">
-            Collaborate with us through pilots, partnerships, or integrations and be part of the movement to make audit-ready climate data the norm for every organization.
+            Work with us through pilots, partnerships or integrations to make audit-ready climate data the norm for every organisation.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">

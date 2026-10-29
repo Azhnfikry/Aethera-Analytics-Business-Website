@@ -16,7 +16,7 @@ export default function Footer() {
             <AetheraLogo size="sm" />
 
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-light max-w-sm">
-              Aethera is agentic sustainability data infrastructure: AI agents that collect, validate, and reconcile sustainability data into a governed, audit-ready foundation for carbon accounting, reporting, and decarbonization.
+              Aethera is agentic sustainability data infrastructure for Malaysian companies: AI agents that collect, validate and trace sustainability data into an audit-ready foundation for carbon accounting and NSRF disclosure.
             </p>
 
             <div className="pt-2 flex flex-col space-y-2">

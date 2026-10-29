@@ -1,6 +1,6 @@
 {
   "name": "Aethera",
-  "description": "Agentic Sustainability Data Infrastructure. Aethera deploys AI agents that collect, validate and reconcile sustainability data into a governed, audit-ready foundation for carbon accounting and reporting.",
+  "description": "AI agents that collect, validate and trace sustainability data for Malaysian companies. Built for NSRF and Bursa disclosure, with your team approving every number.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

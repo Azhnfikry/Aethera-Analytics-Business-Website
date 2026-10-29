@@ -7,13 +7,17 @@ import {
 import { Link } from '../router';
 import utmLogo from '../assets/images/partners/utm.png';
 import parcLogo from '../assets/images/partners/parc.png';
-import simeDarbyLogo from '../assets/images/partners/sime-darby-property.png';
 
-const PILOT_PARTNERS = [
+const ENGAGEMENT_PARTNERS = [
   { name: 'UTM Kuala Lumpur', logo: utmLogo, size: 'h-12' },
   // Square logo, so a little taller to balance visually with the wide ones
-  { name: 'PARC Subang Jaya', logo: parcLogo, size: 'h-16 rounded-lg' },
-  { name: 'Sime Darby Property', logo: simeDarbyLogo, size: 'h-14' },
+  { name: 'PARC @ Subang Ria', logo: parcLogo, size: 'h-16 rounded-lg' },
+  // TODO(content): re-add only with written permission (Sime Darby Property card removed)
+];
+
+const TEAM = [
+  { name: 'Azhan Fikri', initials: 'AF', role: 'Co-founder, Product & Business Operations' },
+  { name: 'Bryan Lai', initials: 'BL', role: 'Co-founder, Technical Lead (Data & AI)' },
 ];
 
 const FLOW = [
@@ -34,7 +38,7 @@ const FLOW = [
     caption: 'Do the data work, continuously.',
     agents: true,
     items: [
-      { icon: Database, label: 'Ingestion agent', detail: 'Extracts and normalizes every source' },
+      { icon: Database, label: 'Ingestion agent', detail: 'Extracts and normalises every source' },
       { icon: ShieldCheck, label: 'Validation agent', detail: 'Checks completeness, flags anomalies' },
       { icon: Layers, label: 'Calculation agent', detail: 'Applies emission factors, Scope 1–3' },
       { icon: Mail, label: 'Engagement agent', detail: 'Chases missing supplier data' },
@@ -63,6 +67,40 @@ const FLOW = [
   },
 ];
 
+// Build status shown on each solution card; update here as features ship
+const STATUS_STYLES = {
+  live: { label: 'Live in MVP', className: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
+  inDevelopment: { label: 'In development', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
+  roadmap: { label: 'Roadmap', className: 'text-neutral-600 bg-neutral-100 border-neutral-200' },
+};
+
+const CAPABILITIES: { icon: typeof Database; title: string; status: keyof typeof STATUS_STYLES; text: string }[] = [
+  {
+    icon: Database,
+    title: 'Connect Every Data Source',
+    status: 'live',
+    text: 'Agents read utility bills (including TNB), invoices and supplier submissions, and normalise them into one governed data layer. ERP connectors are in development.',
+  },
+  {
+    icon: Layers,
+    title: 'Calculate With Full Lineage',
+    status: 'inDevelopment',
+    text: 'Scope 1, 2 and 3 emissions calculated with Malaysia-specific and international emission factors, with every figure linked to its source and factor.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Validate & Reconcile Automatically',
+    status: 'inDevelopment',
+    text: 'Agents check completeness, flag anomalies and reconcile conflicting figures before they reach a report, with a logged trail auditors can follow.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Chase & Act on the Data',
+    status: 'roadmap',
+    text: 'Agents follow up with PICs and suppliers for missing data, draft disclosures and surface reduction opportunities, with a person approving each step.',
+  },
+];
+
 const TRUST = [
   {
     icon: UserCheck,
@@ -77,12 +115,12 @@ const TRUST = [
   {
     icon: History,
     title: 'Every agent action logged',
-    text: 'Each action is recorded with what changed, when, and why, giving auditors a complete trail to follow.',
+    text: 'Each action is recorded with what changed, when and why, giving auditors a complete trail to follow.',
   },
   {
     icon: ScrollText,
     title: 'Transparent methodology',
-    text: 'Scope 1, 2, and 3 calculations follow GHG Protocol principles, with factors and assumptions documented, not hidden in a black box.',
+    text: 'Scope 1, 2 and 3 calculations follow GHG Protocol principles, with factors and assumptions documented, not hidden in a black box.',
   },
 ];
 
@@ -99,18 +137,18 @@ export default function Home() {
           {/* Enterprise Tag */}
           <div className="mx-auto flex items-center space-x-2 text-emerald-700 font-mono text-[10px] uppercase tracking-[0.25em] bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full w-fit">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-emerald-600" />
-            <span>AGENTIC SUSTAINABILITY DATA INFRASTRUCTURE</span>
+            <span>Agentic sustainability data infrastructure</span>
           </div>
 
           <h1 className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl mx-auto">
             <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent font-semibold">
-              Agentic
-            </span> Infrastructure <br />
-            for Sustainability Data.
+              Audit-ready
+            </span> ESG data, <br />
+            without the chasing.
           </h1>
 
           <p className="max-w-xl mx-auto text-neutral-600 text-sm sm:text-base font-sans font-light leading-relaxed">
-            Aethera deploys AI agents that collect, validate, and reconcile sustainability data from every source, building a governed, audit-ready data foundation your teams and systems can act on.
+            AI agents collect, validate and trace sustainability data from every source, built for NSRF and Bursa disclosure. Your team approves every number.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
@@ -120,7 +158,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group bg-emerald-600 hover:bg-emerald-800 text-white font-mono font-bold text-xs uppercase px-7 py-3.5 rounded transition-all duration-200 shadow-md cursor-pointer transform hover:scale-[1.02] flex items-center space-x-2"
             >
-              <span>Book Demo Audit</span>
+              <span>Book a Demo</span>
               <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
             </a>
             <Link
@@ -138,7 +176,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-emerald-100/70">
               <div className="flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                <span className="font-mono text-[9px] font-bold text-emerald-800 tracking-widest uppercase">ABOUT AETHERA & FOUNDER</span>
+                <span className="font-mono text-[9px] font-bold text-emerald-800 tracking-widest uppercase">ABOUT AETHERA & FOUNDERS</span>
               </div>
               <Link
                 to="/about"
@@ -152,20 +190,24 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
               <div className="sm:col-span-7 space-y-1.5">
                 <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">
-                  Building the agentic data layer for corporate sustainability.
+                  Building the agentic data layer for carbon compliance.
                 </h3>
                 <p className="text-xs text-neutral-600 font-sans font-light leading-relaxed">
-                  Founded by Azhan Fikri, Aethera uses AI agents to turn fragmented sustainability information into a trusted, continuously updated data foundation for carbon accounting, reporting, and climate action.
+                  Aethera was founded by Azhan Fikri and Bryan Lai to remove the manual data chasing behind sustainability reporting. Our agents turn fragmented data from bills, ERPs and suppliers into a trusted, traceable foundation for carbon accounting and NSRF disclosure.
                 </p>
               </div>
-              <div className="sm:col-span-5 bg-white border border-neutral-200/85 rounded-lg p-3 flex items-center space-x-3 shadow-xs">
-                <div className="w-9 h-9 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 text-xs font-mono font-bold shrink-0">
-                  AF
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-xs text-neutral-900">Azhan Fikri</h4>
-                  <p className="text-[9px] text-neutral-400 font-mono">Founder</p>
-                </div>
+              <div className="sm:col-span-5 space-y-2">
+                {TEAM.map((member) => (
+                  <div key={member.name} className="bg-white border border-neutral-200/85 rounded-lg p-3 flex items-center space-x-3 shadow-xs">
+                    <div className="w-9 h-9 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 text-xs font-mono font-bold shrink-0">
+                      {member.initials}
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-neutral-900">{member.name}</h4>
+                      <p className="text-[9px] text-neutral-400 font-mono">{member.role}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -173,13 +215,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PILOT PROGRAMME PARTNERS */}
+      {/* CARBON ACCOUNTING ENGAGEMENTS */}
       <section id="pilots" className="px-6 pb-16 max-w-5xl mx-auto w-full text-center space-y-6">
         <p className="font-mono text-[10px] font-bold text-neutral-500 tracking-[0.2em] uppercase">
-          Currently engaging on pilot programmes with
+          Carbon accounting engagements with
         </p>
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {PILOT_PARTNERS.map((p) => (
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {ENGAGEMENT_PARTNERS.map((p) => (
             <li
               key={p.name}
               className="bg-white border border-neutral-200 rounded-xl px-6 py-5 flex flex-col items-center justify-center gap-3 shadow-xs hover:border-emerald-300 transition-colors duration-300"
@@ -273,18 +315,18 @@ export default function Home() {
                   Why Aethera Exists
                 </h2>
                 <p className="text-neutral-800 text-sm font-sans font-medium">
-                  Most sustainability teams still struggle with:
+                  NSRF disclosure is now mandatory for Bursa-listed companies, and buyers and banks are asking SMEs for the same data. Most sustainability teams still struggle with:
                 </p>
               </div>
 
               <ul className="space-y-4">
                 {[
-                  "Sustainability data scattered across spreadsheets, systems, and suppliers",
-                  "Manual data collection and carbon accounting",
+                  "Data scattered across spreadsheets, systems, utility bills and suppliers",
+                  "Weeks spent chasing PICs and departments for inputs",
                   "Slow supplier engagement for Scope 3 emissions",
                   "No single source of truth for emissions data",
                   "Weak traceability when auditors ask questions",
-                  "Increasing regulatory requirements"
+                  "Global tools that miss Malaysian emission factors and NSRF requirements"
                 ].map((challenge, idx) => (
                   <li key={idx} className="flex items-start space-x-3 text-sm text-neutral-900">
                     <div className="w-5 h-5 rounded-full bg-red-50 border border-red-100 flex items-center justify-center shrink-0 mt-0.5">
@@ -319,45 +361,22 @@ export default function Home() {
               {/* 2x2 Grid of capabilities */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                <div className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
-                  <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
-                    <Database className="w-4 h-4" />
+                {CAPABILITIES.map(({ icon: Icon, title, status, text }) => (
+                  <div key={title} className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className={`font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
+                        {STATUS_STYLES[status].label}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-bold text-sm text-neutral-900">{title}</h3>
+                    <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
+                      {text}
+                    </p>
                   </div>
-                  <h3 className="font-display font-bold text-sm text-neutral-900">Connect Every Data Source</h3>
-                  <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
-                    Ingestion agents pull data from utility bills, ERPs, facility systems, and supplier submissions, then normalize it into one governed data layer.
-                  </p>
-                </div>
-
-                <div className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
-                  <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
-                    <Layers className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-display font-bold text-sm text-neutral-900">Calculate With Full Lineage</h3>
-                  <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
-                    Scope 1, 2, and 3 emissions are calculated with transparent methodologies, and every figure links back to its source and emission factor.
-                  </p>
-                </div>
-
-                <div className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
-                  <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-display font-bold text-sm text-neutral-900">Validate &amp; Reconcile Automatically</h3>
-                  <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
-                    Agents check completeness, flag anomalies, and reconcile conflicting figures before they reach a report, with a logged trail auditors can follow.
-                  </p>
-                </div>
-
-                <div className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
-                  <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-display font-bold text-sm text-neutral-900">Act on the Data</h3>
-                  <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
-                    Agents chase missing supplier data, draft disclosures, and surface reduction opportunities, with a person approving each step.
-                  </p>
-                </div>
+                ))}
 
               </div>
             </div>
@@ -378,7 +397,7 @@ export default function Home() {
               Agents Propose. People Approve.
             </h2>
             <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
-              Reported sustainability data has to stand up to auditors and regulators. Aethera is designed so automation never comes at the cost of accountability.
+              Reported sustainability data has to stand up to auditors and regulators. These principles are built into Aethera's architecture from day one, so automation never comes at the cost of accountability.
             </p>
             <p className="text-xs text-neutral-600 font-sans">
               Questions about how your data is stored and secured?{' '}
