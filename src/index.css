@@ -14,6 +14,12 @@ body {
   overflow-x: hidden;
 }
 
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;

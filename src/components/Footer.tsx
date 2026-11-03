@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="bg-neutral-50 border-t border-neutral-200 pt-20 pb-12 px-6">
+    <footer id="footer" className="print:hidden bg-neutral-50 border-t border-neutral-200 pt-20 pb-12 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Core Description + Grid columns */}
@@ -53,7 +53,8 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2 text-xs">
                 <li><Link to="/blog" className="text-neutral-600 hover:text-neutral-900 transition-colors">Blog</Link></li>
-                <li><Link to="/#how-it-works" className="text-neutral-600 hover:text-neutral-900 transition-colors">How It Works</Link></li>
+                <li><Link to="/how-it-works" className="text-neutral-600 hover:text-neutral-900 transition-colors">How It Works</Link></li>
+                <li><Link to="/sme-carbon-calculator" className="text-neutral-600 hover:text-neutral-900 transition-colors">Free SME Carbon Calculator</Link></li>
                 <li><Link to="/#trust" className="text-neutral-600 hover:text-neutral-900 transition-colors">Trust &amp; Control</Link></li>
               </ul>
             </div>
@@ -66,7 +67,7 @@ export default function Footer() {
               <ul className="space-y-2 text-xs">
                 <li><Link to="/about" className="text-neutral-600 hover:text-neutral-900 transition-colors">About Us</Link></li>
                 <li><Link to="/#pilots" className="text-neutral-600 hover:text-neutral-900 transition-colors">Pilot Programme</Link></li>
-                <li><a href="https://calendar.app.google/Vce1rhzMPGhr8cHS6" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 transition-colors">Contact Sales</a></li>
+                <li><Link to="/contact" className="text-neutral-600 hover:text-neutral-900 transition-colors">Contact Us</Link></li>
               </ul>
             </div>
 

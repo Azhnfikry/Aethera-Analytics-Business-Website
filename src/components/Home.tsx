@@ -241,198 +241,216 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* HOW THE AGENTS WORK */}
-      <section id="how-it-works" className="px-6 py-20 border-t border-neutral-200 relative">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full inline-block">
-              HOW IT WORKS
-            </span>
-            <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
-              From Scattered Data to an Audit-Ready Foundation
-            </h2>
-            <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
-              Aethera's agents are designed to sit between your data sources and your reports, doing the collection, checking and calculation while your team stays in control of what gets reported.
-            </p>
-          </div>
+      <HowItWorksSection />
 
-          <div className="flex flex-col lg:flex-row items-stretch gap-3">
-            {FLOW.map((col, idx) => (
-              <Fragment key={col.step}>
-                <div
-                  className={`flex-1 rounded-xl p-5 space-y-4 border ${
-                    col.agents
-                      ? 'bg-neutral-950 border-neutral-800 text-white shadow-xl lg:flex-[1.25]'
-                      : 'bg-white border-neutral-200 shadow-xs'
-                  }`}
-                >
-                  <div className="space-y-1">
-                    <span className={`font-mono text-[10px] font-bold tracking-widest ${col.agents ? 'text-emerald-400' : 'text-emerald-700'}`}>
-                      {col.step}
-                    </span>
-                    <h3 className={`font-display font-bold text-base flex items-center gap-2 ${col.agents ? 'text-white' : 'text-neutral-900'}`}>
-                      {col.agents && <Bot className="w-4 h-4 text-emerald-400" />}
-                      {col.title}
-                    </h3>
-                    <p className={`text-xs font-sans font-light ${col.agents ? 'text-neutral-400' : 'text-neutral-500'}`}>{col.caption}</p>
-                  </div>
-                  <ul className="space-y-2">
-                    {col.items.map(({ icon: Icon, label, detail, status }) => (
-                      <li
-                        key={label}
-                        className={`flex items-start gap-2.5 rounded-lg px-3 py-2.5 border ${
-                          col.agents ? 'bg-neutral-900 border-neutral-800' : 'bg-neutral-50 border-neutral-200'
-                        }`}
-                      >
-                        <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${col.agents ? 'text-emerald-400' : 'text-emerald-600'}`} />
-                        <div>
-                          <span className={`block text-xs font-semibold ${col.agents ? 'text-white' : 'text-neutral-800'}`}>{label}</span>
-                          {detail && <span className="block text-[11px] text-neutral-400 font-light">{detail}</span>}
-                          {status && (
-                            <span className={`inline-block mt-1.5 font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
-                              {STATUS_STYLES[status].label}
-                            </span>
-                          )}
-                        </div>
-                        {col.agents && <span className="ml-auto mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {idx < FLOW.length - 1 && (
-                  <div className="flex items-center justify-center text-emerald-600 shrink-0" aria-hidden="true">
-                    <ArrowRight className="w-5 h-5 hidden lg:block" />
-                    <ArrowDown className="w-5 h-5 lg:hidden" />
-                  </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CapabilitiesSection />
 
-      {/* COMPACT BENTO CAPABILITIES MATRIX */}
-      <section id="capabilities" className="px-6 py-20 border-t border-neutral-200 bg-neutral-100/55 relative">
-        <div className="absolute inset-0 bg-radial from-emerald-500/5 via-transparent to-transparent pointer-events-none blur-3xl opacity-40"></div>
-        <div className="max-w-7xl mx-auto space-y-12">
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-            {/* LEFT COLUMN: Why Aethera Exists */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="space-y-3">
-                <span className="font-mono text-[9px] text-red-700 tracking-[0.2em] uppercase font-bold bg-red-50 border border-red-200 px-2.5 py-1 rounded-full w-fit">
-                  THE INDUSTRY CHALLENGE
-                </span>
-                <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
-                  Why Aethera Exists
-                </h2>
-                <p className="text-neutral-800 text-sm font-sans font-medium">
-                  NSRF disclosure is now mandatory for Bursa-listed companies, and buyers and banks are asking SMEs for the same data. Most sustainability teams still struggle with:
-                </p>
-              </div>
-
-              <ul className="space-y-4">
-                {[
-                  "Data scattered across spreadsheets, systems, utility bills and suppliers",
-                  "Weeks spent chasing PICs and departments for inputs",
-                  "Slow supplier engagement for Scope 3 emissions",
-                  "No single source of truth for emissions data",
-                  "Weak traceability when auditors ask questions",
-                  "Global tools that miss Malaysian emission factors and NSRF requirements"
-                ].map((challenge, idx) => (
-                  <li key={idx} className="flex items-start space-x-3 text-sm text-neutral-900">
-                    <div className="w-5 h-5 rounded-full bg-red-50 border border-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                    </div>
-                    <span className="font-sans font-normal leading-snug">{challenge}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="p-4 bg-emerald-50/40 border border-emerald-300/60 rounded-xl">
-                <p className="text-xs text-emerald-950 font-sans font-medium leading-relaxed">
-                  Aethera fixes this at the infrastructure level: one governed data foundation, with automation doing the heavy lifting and people staying in control.
-                </p>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: What We Do */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-3">
-                <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full w-fit">
-                  THE SOLUTION
-                </span>
-                <h2 className="font-display font-semibold text-3xl text-emerald-700 tracking-tight">
-                  Agents That Do the Sustainability Data Work.
-                </h2>
-                <p className="text-neutral-900 text-sm font-sans font-medium">
-                  Aethera's agents:
-                </p>
-              </div>
-
-              {/* 2x2 Grid of capabilities */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-                {CAPABILITIES.map(({ icon: Icon, title, status, text }) => (
-                  <div key={title} className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <span className={`font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
-                        {STATUS_STYLES[status].label}
-                      </span>
-                    </div>
-                    <h3 className="font-display font-bold text-sm text-neutral-900">{title}</h3>
-                    <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
-                      {text}
-                    </p>
-                  </div>
-                ))}
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* TRUST & CONTROL */}
-      <section id="trust" className="px-6 py-20 border-t border-neutral-200 relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-4 space-y-4">
-            <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full inline-block">
-              TRUST & CONTROL
-            </span>
-            <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
-              Automation Proposes. People Approve.
-            </h2>
-            <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
-              Reported sustainability data has to stand up to auditors and regulators. These principles are built into Aethera's architecture from day one, so automation never comes at the cost of accountability.
-            </p>
-            <p className="text-xs text-neutral-600 font-sans">
-              Questions about how your data is stored and secured?{' '}
-              <a href="mailto:hello@aetheraanalytics.com" className="font-semibold text-emerald-700 hover:underline">
-                Ask our team
-              </a>.
-            </p>
-          </div>
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {TRUST.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 shadow-xs">
-                <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center">
-                  <Icon className="w-4 h-4" />
-                </div>
-                <h3 className="font-display font-bold text-sm text-neutral-900">{title}</h3>
-                <p className="text-xs text-neutral-700 font-sans leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustSection />
 
     </main>
+  );
+}
+
+export function HowItWorksSection() {
+  // HOW THE AGENTS WORK
+  return (
+    <section id="how-it-works" className="px-6 py-20 border-t border-neutral-200 relative">
+      <div className="max-w-7xl mx-auto space-y-12">
+        <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full inline-block">
+            HOW IT WORKS
+          </span>
+          <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
+            From Scattered Data to an Audit-Ready Foundation
+          </h2>
+          <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
+            Aethera's agents are designed to sit between your data sources and your reports, doing the collection, checking and calculation while your team stays in control of what gets reported.
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-stretch gap-3">
+          {FLOW.map((col, idx) => (
+            <Fragment key={col.step}>
+              <div
+                className={`flex-1 rounded-xl p-5 space-y-4 border ${
+                  col.agents
+                    ? 'bg-neutral-950 border-neutral-800 text-white shadow-xl lg:flex-[1.25]'
+                    : 'bg-white border-neutral-200 shadow-xs'
+                }`}
+              >
+                <div className="space-y-1">
+                  <span className={`font-mono text-[10px] font-bold tracking-widest ${col.agents ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                    {col.step}
+                  </span>
+                  <h3 className={`font-display font-bold text-base flex items-center gap-2 ${col.agents ? 'text-white' : 'text-neutral-900'}`}>
+                    {col.agents && <Bot className="w-4 h-4 text-emerald-400" />}
+                    {col.title}
+                  </h3>
+                  <p className={`text-xs font-sans font-light ${col.agents ? 'text-neutral-400' : 'text-neutral-500'}`}>{col.caption}</p>
+                </div>
+                <ul className="space-y-2">
+                  {col.items.map(({ icon: Icon, label, detail, status }) => (
+                    <li
+                      key={label}
+                      className={`flex items-start gap-2.5 rounded-lg px-3 py-2.5 border ${
+                        col.agents ? 'bg-neutral-900 border-neutral-800' : 'bg-neutral-50 border-neutral-200'
+                      }`}
+                    >
+                      <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${col.agents ? 'text-emerald-400' : 'text-emerald-600'}`} />
+                      <div>
+                        <span className={`block text-xs font-semibold ${col.agents ? 'text-white' : 'text-neutral-800'}`}>{label}</span>
+                        {detail && <span className="block text-[11px] text-neutral-400 font-light">{detail}</span>}
+                        {status && (
+                          <span className={`inline-block mt-1.5 font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
+                            {STATUS_STYLES[status].label}
+                          </span>
+                        )}
+                      </div>
+                      {col.agents && <span className="ml-auto mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {idx < FLOW.length - 1 && (
+                <div className="flex items-center justify-center text-emerald-600 shrink-0" aria-hidden="true">
+                  <ArrowRight className="w-5 h-5 hidden lg:block" />
+                  <ArrowDown className="w-5 h-5 lg:hidden" />
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CapabilitiesSection() {
+  // COMPACT BENTO CAPABILITIES MATRIX
+  return (
+    <section id="capabilities" className="px-6 py-20 border-t border-neutral-200 bg-neutral-100/55 relative">
+      <div className="absolute inset-0 bg-radial from-emerald-500/5 via-transparent to-transparent pointer-events-none blur-3xl opacity-40"></div>
+      <div className="max-w-7xl mx-auto space-y-12">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+          {/* LEFT COLUMN: Why Aethera Exists */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-3">
+              <span className="font-mono text-[9px] text-red-700 tracking-[0.2em] uppercase font-bold bg-red-50 border border-red-200 px-2.5 py-1 rounded-full w-fit">
+                THE INDUSTRY CHALLENGE
+              </span>
+              <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
+                Why Aethera Exists
+              </h2>
+              <p className="text-neutral-800 text-sm font-sans font-medium">
+                NSRF disclosure is now mandatory for Bursa-listed companies, and buyers and banks are asking SMEs for the same data. Most sustainability teams still struggle with:
+              </p>
+            </div>
+
+            <ul className="space-y-4">
+              {[
+                "Data scattered across spreadsheets, systems, utility bills and suppliers",
+                "Weeks spent chasing PICs and departments for inputs",
+                "Slow supplier engagement for Scope 3 emissions",
+                "No single source of truth for emissions data",
+                "Weak traceability when auditors ask questions",
+                "Global tools that miss Malaysian emission factors and NSRF requirements"
+              ].map((challenge, idx) => (
+                <li key={idx} className="flex items-start space-x-3 text-sm text-neutral-900">
+                  <div className="w-5 h-5 rounded-full bg-red-50 border border-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  </div>
+                  <span className="font-sans font-normal leading-snug">{challenge}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="p-4 bg-emerald-50/40 border border-emerald-300/60 rounded-xl">
+              <p className="text-xs text-emerald-950 font-sans font-medium leading-relaxed">
+                Aethera fixes this at the infrastructure level: one governed data foundation, with automation doing the heavy lifting and people staying in control.
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: What We Do */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-3">
+              <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full w-fit">
+                THE SOLUTION
+              </span>
+              <h2 className="font-display font-semibold text-3xl text-emerald-700 tracking-tight">
+                Agents That Do the Sustainability Data Work.
+              </h2>
+              <p className="text-neutral-900 text-sm font-sans font-medium">
+                Aethera's agents:
+              </p>
+            </div>
+
+            {/* 2x2 Grid of capabilities */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              {CAPABILITIES.map(({ icon: Icon, title, status, text }) => (
+                <div key={title} className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 hover:border-neutral-300 shadow-xs transition-all duration-300">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className={`font-mono text-[9px] tracking-[0.2em] uppercase font-bold border px-2.5 py-1 rounded-full whitespace-nowrap ${STATUS_STYLES[status].className}`}>
+                      {STATUS_STYLES[status].label}
+                    </span>
+                  </div>
+                  <h3 className="font-display font-bold text-sm text-neutral-900">{title}</h3>
+                  <p className="text-xs text-neutral-700 font-sans font-normal leading-relaxed">
+                    {text}
+                  </p>
+                </div>
+              ))}
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+export function TrustSection() {
+  // TRUST & CONTROL
+  return (
+    <section id="trust" className="px-6 py-20 border-t border-neutral-200 relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="lg:col-span-4 space-y-4">
+          <span className="font-mono text-[9px] text-emerald-700 tracking-[0.2em] uppercase font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full inline-block">
+            TRUST & CONTROL
+          </span>
+          <h2 className="font-display font-bold text-3xl text-neutral-900 tracking-tight">
+            Automation Proposes. People Approve.
+          </h2>
+          <p className="text-neutral-600 text-sm font-sans font-light leading-relaxed">
+            Reported sustainability data has to stand up to auditors and regulators. These principles are built into Aethera's architecture from day one, so automation never comes at the cost of accountability.
+          </p>
+          <p className="text-xs text-neutral-600 font-sans">
+            Questions about how your data is stored and secured?{' '}
+            <a href="mailto:hello@aetheraanalytics.com" className="font-semibold text-emerald-700 hover:underline">
+              Ask our team
+            </a>.
+          </p>
+        </div>
+        <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {TRUST.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="bg-white border border-neutral-200 rounded-xl p-5 space-y-3 shadow-xs">
+              <div className="w-8 h-8 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center">
+                <Icon className="w-4 h-4" />
+              </div>
+              <h3 className="font-display font-bold text-sm text-neutral-900">{title}</h3>
+              <p className="text-xs text-neutral-700 font-sans leading-relaxed">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

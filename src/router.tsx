@@ -9,6 +9,9 @@ export interface Route {
 export const PATHS: Record<View, string> = {
   home: '/',
   about: '/about',
+  howItWorks: '/how-it-works',
+  contact: '/contact',
+  sme: '/sme-carbon-calculator',
   blog: '/blog',
   privacy: '/privacy',
   terms: '/terms',

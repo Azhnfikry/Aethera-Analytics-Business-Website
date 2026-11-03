@@ -11,7 +11,7 @@ function sitemap(): Plugin {
   return {
     name: 'sitemap',
     generateBundle() {
-      const pages = ['/', '/about', '/blog', '/privacy', '/terms'].map((path) => ({path}));
+      const pages = ['/', '/about', '/how-it-works', '/sme-carbon-calculator', '/contact', '/blog', '/privacy', '/terms'].map((path) => ({path}));
       const posts = BLOG_POSTS.map((p) => ({path: `/blog/${p.id}`, lastmod: p.publishedAt}));
       const urls = [...pages, ...posts]
         .map(({path, lastmod}: {path: string; lastmod?: string}) =>

@@ -4,6 +4,14 @@ import AetheraLogo from './AetheraLogo';
 import { View } from '../types';
 import { Link } from '../router';
 
+const NAV_ITEMS: { label: string; to: string; view: View }[] = [
+  { label: 'How It Works', to: '/how-it-works', view: 'howItWorks' },
+  { label: 'Free SME Tool', to: '/sme-carbon-calculator', view: 'sme' },
+  { label: 'About Us', to: '/about', view: 'about' },
+  { label: 'Blog', to: '/blog', view: 'blog' },
+  { label: 'Contact', to: '/contact', view: 'contact' },
+];
+
 interface NavbarProps {
   currentView: View;
 }
@@ -25,7 +33,7 @@ export default function Navbar({ currentView }: NavbarProps) {
   return (
     <nav
       id="main-nav"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
+      className={`print:hidden fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
         scrolled
           ? 'bg-white/85 backdrop-blur-md border-neutral-200 py-4 shadow-xs'
           : 'bg-transparent border-transparent py-6'
@@ -42,35 +50,17 @@ export default function Navbar({ currentView }: NavbarProps) {
         </Link>
 
         {/* Desktop Links & Status Badge */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/#how-it-works"
-            onClick={closeMenu}
-            className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'home' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-          >
-            // HOW IT WORKS
-          </Link>
-          <Link
-            to="/#capabilities"
-            onClick={closeMenu}
-            className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'home' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-          >
-            // VALUE PROP
-          </Link>
-          <Link
-            to="/about"
-            onClick={closeMenu}
-            className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'about' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-          >
-            // ABOUT US
-          </Link>
-          <Link
-            to="/blog"
-            onClick={closeMenu}
-            className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'blog' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-          >
-            // BLOG
-          </Link>
+        <div className="hidden lg:flex items-center space-x-7">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={closeMenu}
+              className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === item.view ? 'text-emerald-700' : 'text-neutral-700 hover:text-black'}`}
+            >
+              // {item.label.toUpperCase()}
+            </Link>
+          ))}
 
           {/* Book Demo Button */}
           <a
@@ -85,7 +75,7 @@ export default function Navbar({ currentView }: NavbarProps) {
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="lg:hidden flex items-center space-x-4">
           <a
             href="https://calendar.app.google/Vce1rhzMPGhr8cHS6"
             target="_blank"
@@ -105,36 +95,18 @@ export default function Navbar({ currentView }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden fixed top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-white/95 backdrop-blur-lg border-t border-neutral-200 z-40 transition-all duration-300 px-6 py-8 flex flex-col justify-between shadow-lg">
+        <div className="lg:hidden fixed top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-white/95 backdrop-blur-lg border-t border-neutral-200 z-40 transition-all duration-300 px-6 py-8 flex flex-col justify-between shadow-lg">
           <div className="flex flex-col space-y-6">
-            <Link
-              to="/#how-it-works"
-              onClick={closeMenu}
-              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
-            >
-              How It Works
-            </Link>
-            <Link
-              to="/#capabilities"
-              onClick={closeMenu}
-              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
-            >
-              Value Propositions
-            </Link>
-            <Link
-              to="/about"
-              onClick={closeMenu}
-              className="text-xl font-display font-medium text-left text-emerald-700 hover:text-emerald-800 cursor-pointer"
-            >
-              About Us Story
-            </Link>
-            <Link
-              to="/blog"
-              onClick={closeMenu}
-              className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
-            >
-              Blog
-            </Link>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={closeMenu}
+                className={`text-xl font-display font-medium text-left cursor-pointer ${currentView === item.view ? 'text-emerald-700' : 'text-neutral-800 hover:text-neutral-950'}`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           <div className="flex flex-col space-y-4 border-t border-neutral-200 pt-6">
