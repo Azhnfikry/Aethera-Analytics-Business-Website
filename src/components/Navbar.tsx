@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import AetheraLogo from './AetheraLogo';
 import { View } from '../types';
-import { navigate } from '../router';
+import { Link } from '../router';
 
 interface NavbarProps {
   currentView: View;
@@ -20,15 +20,7 @@ export default function Navbar({ currentView }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const go = (to: string) => {
-    setIsOpen(false);
-    navigate(to);
-  };
-
-  const handleLogoClick = () => go('/');
-  const handleHomeNavigate = (sectionId: string) => go(`/#${sectionId}`);
-  const handleBlogClick = () => go('/blog');
-  const handleAboutClick = () => go('/about');
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav
@@ -41,39 +33,44 @@ export default function Navbar({ currentView }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo / Brandmark */}
-        <button
-          onClick={handleLogoClick}
+        <Link
+          to="/"
+          onClick={closeMenu}
           className="flex items-center group text-left cursor-pointer hover:opacity-90 transition-opacity"
         >
           <AetheraLogo size="sm" />
-        </button>
+        </Link>
 
         {/* Desktop Links & Status Badge */}
         <div className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() => handleHomeNavigate('how-it-works')}
+          <Link
+            to="/#how-it-works"
+            onClick={closeMenu}
             className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'home' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
           >
             // HOW IT WORKS
-          </button>
-          <button
-            onClick={() => handleHomeNavigate('capabilities')}
+          </Link>
+          <Link
+            to="/#capabilities"
+            onClick={closeMenu}
             className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'home' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
           >
             // VALUE PROP
-          </button>
-          <button
-            onClick={handleAboutClick}
+          </Link>
+          <Link
+            to="/about"
+            onClick={closeMenu}
             className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'about' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
           >
             // ABOUT US
-          </button>
-          <button
-            onClick={handleBlogClick}
+          </Link>
+          <Link
+            to="/blog"
+            onClick={closeMenu}
             className={`text-xs font-bold tracking-wider font-mono transition-colors duration-200 cursor-pointer ${currentView === 'blog' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
           >
             // BLOG
-          </button>
+          </Link>
 
           {/* Book Demo Button */}
           <a
@@ -110,30 +107,34 @@ export default function Navbar({ currentView }: NavbarProps) {
       {isOpen && (
         <div className="md:hidden fixed top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-white/95 backdrop-blur-lg border-t border-neutral-200 z-40 transition-all duration-300 px-6 py-8 flex flex-col justify-between shadow-lg">
           <div className="flex flex-col space-y-6">
-            <button
-              onClick={() => handleHomeNavigate('how-it-works')}
+            <Link
+              to="/#how-it-works"
+              onClick={closeMenu}
               className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
             >
               How It Works
-            </button>
-            <button
-              onClick={() => handleHomeNavigate('capabilities')}
+            </Link>
+            <Link
+              to="/#capabilities"
+              onClick={closeMenu}
               className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
             >
               Value Propositions
-            </button>
-            <button
-              onClick={handleAboutClick}
+            </Link>
+            <Link
+              to="/about"
+              onClick={closeMenu}
               className="text-xl font-display font-medium text-left text-emerald-700 hover:text-emerald-800 cursor-pointer"
             >
               About Us Story
-            </button>
-            <button
-              onClick={handleBlogClick}
+            </Link>
+            <Link
+              to="/blog"
+              onClick={closeMenu}
               className="text-xl font-display font-medium text-left text-neutral-800 hover:text-neutral-950 cursor-pointer"
             >
               Blog
-            </button>
+            </Link>
           </div>
 
           <div className="flex flex-col space-y-4 border-t border-neutral-200 pt-6">

@@ -69,11 +69,13 @@ interface LinkProps {
   to: string;
   className?: string;
   children?: ReactNode;
+  onClick?: () => void;
 }
 
 // A real <a href> (crawlable, opens in new tab) that navigates without a page reload
-export function Link({ to, className, children }: LinkProps) {
+export function Link({ to, className, children, onClick }: LinkProps) {
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.();
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     navigate(to);
