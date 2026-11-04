@@ -34,7 +34,7 @@ const EMPTY: CalcState = {
   employees: '',
   fuels: { dieselStationary: '', dieselVehicles: '', petrolVehicles: '', lpg: '', naturalGas: '' },
   meters: [{ label: 'Main premises', kwh: '' }],
-  profile: { isSme: 'yes', malaysianOwned: 'yes', taxable: 'yes', plans: [] },
+  profile: { isSme: 'yes', malaysianOwned: 'yes', taxable: 'yes', listed: 'no', plans: [] },
 };
 
 const STEPS = [
@@ -48,7 +48,11 @@ const STEPS = [
 function loadState(): CalcState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return { ...EMPTY, ...JSON.parse(raw) };
+    if (raw) {
+      const saved = JSON.parse(raw);
+      // merge profile too, so answers saved before a question was added still load
+      return { ...EMPTY, ...saved, profile: { ...EMPTY.profile, ...saved.profile } };
+    }
   } catch {
     // storage unavailable or corrupt: start fresh
   }
@@ -103,8 +107,8 @@ export default function SmeCalculator() {
   }, [state]);
 
   const matches = useMemo(
-    () => PROGRAMMES.map((p) => ({ programme: p, ...p.assess(state.profile) })),
-    [state.profile],
+    () => PROGRAMMES.map((p) => ({ programme: p, ...p.assess(state.profile, state.region) })),
+    [state.profile, state.region],
   );
 
   const goTo = (i: number) => {
@@ -311,10 +315,11 @@ export default function SmeCalculator() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Question label="Is your business an SME?" value={state.profile.isSme} onChange={(v) => setProfile({ isSme: v })} />
                     <Question label="At least 60% Malaysian-owned?" value={state.profile.malaysianOwned} onChange={(v) => setProfile({ malaysianOwned: v })} />
                     <Question label="Does it pay income tax?" value={state.profile.taxable} onChange={(v) => setProfile({ taxable: v })} />
+                    <Question label="Listed on Bursa Malaysia?" value={state.profile.listed} onChange={(v) => setProfile({ listed: v })} />
                   </div>
 
                   <fieldset>

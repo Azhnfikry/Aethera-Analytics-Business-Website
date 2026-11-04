@@ -2,6 +2,8 @@
 // Details were checked against official sources in November 2026. Schemes, allocations and deadlines
 // change often, so the page always tells users to confirm with the administering agency.
 
+import type { GridRegion } from './factors';
+
 export const PROGRAMMES_CHECKED = 'November 2026';
 
 export type Answer = 'yes' | 'no' | 'unsure';
@@ -14,6 +16,7 @@ export type Plan =
   | 'transport'
   | 'wasteWater'
   | 'certification'
+  | 'esgReporting'
   | 'greenServices';
 
 export const PLAN_OPTIONS: { id: Plan; label: string }[] = [
@@ -24,6 +27,7 @@ export const PLAN_OPTIONS: { id: Plan; label: string }[] = [
   { id: 'transport', label: 'Electric vehicles or cleaner fleet' },
   { id: 'wasteWater', label: 'Waste or water management improvements' },
   { id: 'certification', label: 'Sustainability certification for the business' },
+  { id: 'esgReporting', label: 'ESG reporting, emissions tracking or verification' },
   { id: 'greenServices', label: 'We provide green technology services or lease solar systems to others' },
 ];
 
@@ -31,6 +35,7 @@ export interface Profile {
   isSme: Answer;
   malaysianOwned: Answer; // at least 60% Malaysian shareholding
   taxable: Answer; // pays income tax on statutory income
+  listed: Answer; // listed on Bursa Malaysia
   plans: Plan[];
 }
 
@@ -39,13 +44,13 @@ export type Fit = 'explore' | 'check' | 'none';
 export interface Programme {
   id: string;
   name: string;
-  type: 'Financing' | 'Tax incentive';
+  type: 'Financing' | 'Tax incentive' | 'Solar programme';
   agency: string;
   summary: string;
   points: string[];
   url: string;
   urlLabel: string;
-  assess: (p: Profile) => { fit: Fit; reason: string };
+  assess: (p: Profile, region: GridRegion) => { fit: Fit; reason: string };
 }
 
 const has = (p: Profile, ...plans: Plan[]) => plans.some((x) => p.plans.includes(x));
@@ -62,9 +67,11 @@ export const PROGRAMMES: Programme[] = [
       'For legally registered Malaysian companies with at least 60% Malaysian shareholding',
       'Covers energy, manufacturing, transport, building, waste and water projects',
       'RM1.0 billion allocation, open until 31 December 2026 or until fully allocated',
+      'You need a GTFS 5.0 Green Project Certificate from MGTC; the guarantee itself is provided through CGC',
     ],
-    url: 'https://www.gtfs.my/',
-    urlLabel: 'gtfs.my',
+    // gtfs.my was unreachable in Nov 2026, so link to the scheme page on MGTC's own site
+    url: 'https://www.mgtc.gov.my/services/green-technology-financing-scheme-gtfs/',
+    urlLabel: 'MGTC — Green Technology Financing Scheme',
     assess: (p) => {
       if (!has(p, 'solar', 'efficiency', 'storage', 'greenBuilding', 'transport', 'wasteWater'))
         return { fit: 'none', reason: 'Applies to green technology projects; none selected.' };
@@ -96,6 +103,70 @@ export const PROGRAMMES: Programme[] = [
       if (p.isSme === 'unsure')
         return { fit: 'check', reason: 'Your plans match the eligible uses. Confirm your business meets the SME definition.' };
       return { fit: 'explore', reason: 'Your plans match the eligible uses for SMEs.' };
+    },
+  },
+  {
+    id: 'htg',
+    name: 'High Tech & Green Facility (HTG)',
+    type: 'Financing',
+    agency: 'Bank Negara Malaysia, through participating banks such as SME Bank',
+    summary: 'Financing for SMEs investing in green technology, as well as digital and biotechnology.',
+    points: [
+      'Financing rate of up to 5% a year, including the guarantee fee, with tenure of up to 10 years',
+      'Requires a guarantee from CGC or SJPP',
+      'CGC’s BizJamin HTG guarantee covers up to RM8 million per SME and is for private limited (Sdn Bhd) companies only',
+    ],
+    url: 'https://www.smebank.com.my/high-tech-green-facility-htg-',
+    urlLabel: 'SME Bank — High Tech & Green Facility',
+    assess: (p) => {
+      if (p.isSme === 'no') return { fit: 'none', reason: 'This facility is for SMEs.' };
+      if (!has(p, 'solar', 'efficiency', 'storage', 'greenBuilding', 'transport', 'wasteWater'))
+        return { fit: 'none', reason: 'For green technology investment; none selected.' };
+      if (p.isSme === 'unsure')
+        return { fit: 'check', reason: 'Your planned investment is green technology. Confirm your business meets the SME definition.' };
+      return { fit: 'explore', reason: 'Your planned investment is green technology and you are an SME.' };
+    },
+  },
+  {
+    id: 'solar-atap',
+    name: 'Solar ATAP',
+    type: 'Solar programme',
+    agency: 'SEDA and the Energy Commission',
+    summary: 'Install rooftop solar for your own use and get credit on your TNB bill for surplus electricity exported to the grid.',
+    points: [
+      'Open since 1 January 2026, for TNB customers in Peninsular Malaysia only',
+      'Credit for exported electricity is applied to the energy component of your bill, under a 10-year contract',
+      'Existing NEM or self-consumption participants must end their current contract before joining',
+      'Installations above 72 kW need a Connection Assessment Study',
+    ],
+    url: 'https://www.seda.gov.my/reportal/atap/',
+    urlLabel: 'SEDA — Solar ATAP',
+    assess: (p, region) => {
+      if (!has(p, 'solar')) return { fit: 'none', reason: 'Only for rooftop solar; not selected.' };
+      if (region !== 'peninsular') return { fit: 'none', reason: 'Only available in Peninsular Malaysia.' };
+      return { fit: 'explore', reason: 'You are planning solar and your premises are in Peninsular Malaysia. Check whether you already have a NEM contract.' };
+    },
+  },
+  {
+    id: 'esg-deduction',
+    name: 'Tax deduction for ESG reporting costs',
+    type: 'Tax incentive',
+    agency: 'Inland Revenue Board (LHDN)',
+    summary: 'A tax deduction on spending to prepare ESG and emissions reports.',
+    points: [
+      'Deduction of up to RM50,000 per year of assessment, from YA2024 to YA2027',
+      'Covers costs such as ESG reporting, calculating and tracking greenhouse gas emissions, verification and ESG software',
+      'Set out in the Income Tax (Deduction for Expenditure in relation to Environmental Preservation, Social and Governance) Rules 2025',
+      'Only certain company categories qualify, such as listed companies. Confirm with LHDN or your tax adviser',
+    ],
+    url: 'https://belanjawan.mof.gov.my/pdf/belanjawan2024/ucapan/tax-measure.pdf',
+    urlLabel: 'MOF Budget 2024 tax measures (PDF)',
+    assess: (p) => {
+      if (!has(p, 'esgReporting')) return { fit: 'none', reason: 'For ESG reporting costs; not selected.' };
+      if (p.taxable === 'no') return { fit: 'none', reason: 'A tax deduction only helps if the company has taxable income.' };
+      if (p.listed === 'no')
+        return { fit: 'none', reason: 'Mainly for listed companies, so most private SMEs do not qualify.' };
+      return { fit: 'check', reason: 'Your company may be in an eligible category. Confirm before claiming.' };
     },
   },
   {
